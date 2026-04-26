@@ -5,6 +5,8 @@ manifest:
   projects:
     - name: zmk
       remote: zmkfirmware
+      # revision: v0.3 # avoid compatibility break
+      # TODO: Try build main eventually
       revision: main
       import: app/west.yml
   self:
