@@ -88,7 +88,7 @@
 &kp TILDE  &kp PERCENT            &kp LT                 &kp GT                  &kp LEFT_BRACE          &kp RIGHT_BRACE                                          &kp GRAVE          &kp AT         &kp EXCLAMATION  &kp HASH        &trans    &trans
 &kp CARET  &home_row_sticky LGUI  &home_row_sticky LALT  &home_row_sticky LSHFT  &home_row_sticky LCTRL  &kp DOLLAR                                               &kp DOUBLE_QUOTES  &kp EQUAL      &kp COLON        &kp UNDERSCORE  &kp PIPE  &kp DOLLAR
 &trans     &trans                 &kp SLASH              &kp STAR                &kp LEFT_PARENTHESIS    &kp RIGHT_PARENTHESIS  &trans                    &trans  &kp SQT            &kp SEMICOLON  &kp QUESTION     &kp BACKSLASH   &trans    &trans
-                                                                                 &trans                  &trans                 &trans  &trans    &trans  &trans  &trans             &trans
+                                                                                 &trans                  &trans                 &trans  &trans    &trans  &mo 7   &trans             &trans
             >;
         };
 
@@ -97,7 +97,7 @@
 &kp TILDE  &kp PERCENT    &kp LT     &kp GT    &kp LEFT_BRACE        &kp RIGHT_BRACE                                          &kp GRAVE          &kp AT_SIGN             &kp EXCLAMATION          &kp HASH               &trans                 &trans
 &kp CARET  &kp AMPERSAND  &kp MINUS  &kp PLUS  &kp EQUAL             &kp DOLLAR                                               &kp DOUBLE_QUOTES  &home_row_sticky LCTRL  &home_row_sticky LSHIFT  &home_row_sticky LALT  &home_row_sticky LGUI  &kp DOLLAR
 &trans     &trans         &kp SLASH  &kp STAR  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &trans                    &trans  &kp SQT            &kp SEMICOLON           &kp QUESTION             &kp BACKSLASH          &trans                 &trans
-                                               &trans                &trans                 &trans  &trans    &trans  &trans  &trans             &trans
+                                               &trans                &trans                 &mo 7   &trans    &trans  &trans  &trans             &trans
             >;
         };
 
