@@ -3,12 +3,14 @@
  *
  * SPDX-License-Identifier: MIT
  */
-
+#include <dt-bindings/zmk/mouse.h>
+#include <input/processors.dtsi>
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/ext_power.h>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/outputs.h>
+#include <dt-bindings/zmk/pointing.h>
 
 #define QWERTY_L 0
 #define DVORAK_L 1
@@ -32,20 +34,20 @@
 /* QWERTY
  * -------------------------------------------------------------------------------------------------------------------------------------
  * | `     |   Q   |   W   |   E   |   R   |   T   |-----------------------------------|   Y   |   U   |   I   |   O   |   P   | BKSPC |
- * | TAB   |   A   |   S   |   D   |   F   |   G   |-----------------------------------|   H   |   J   |   K   |   L   |   ;   | ENTER |
+ * | GUI   |   A   |   S   |   D   |   F   |   G   |-----------------------------------|   H   |   J   |   K   |   L   |   ;   | ENTER |
  * | CTRL  |   Z   |   X   |   C   |   V   |   B   |  ESC  |-------------------|  CAPS |   N   |   M   |   ,   |   .   |   /   |   '   |
  *                                 |  GUI  |  ALT  |SK SHFT|  Nav  |---|  Sym  | SPACE |  ALT  |  GUI  |
  */
                         bindings = <
 &kp  GRAVE    &kp  Q        &kp  W        &kp  E        &kp  R        &kp  T                                                                         &kp  Y        &kp  U        &kp  I        &kp  O        &kp  P        &kp  BSPC
-&kp  TAB      &kp  A        &kp  S        &kp  D        &kp  F        &kp  G                                                                         &kp  H        &kp  J        &kp  K        &kp  L        &kp  SEMI     &kp  ENTER  
+&kp  LEFT_GUI &kp  A        &kp  S        &kp  D        &kp  F        &kp  G                                                                         &kp  H        &kp  J        &kp  K        &kp  L        &kp  SEMI     &kp  ENTER
 &kp  LCTRL    &kp  Z        &kp  X        &kp  C        &kp  V        &kp  B        &kp  ESC                                           &caps_word    &kp  N        &kp  M        &kp  COMMA    &kp  DOT      &kp  SLASH    &kp  SQT
                                                         &kp  LGUI     &kp  LALT     &sk  LSHIFT    &mo  NAV_L            &mo  SYM_L    &kp  SPACE    &kp  LALT     &kp  RGUI
                         >;
-			
+
                         sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
                 };
-		
+
                 dvorak_layer {
 /* DVORAK
  * -------------------------------------------------------------------------------------------------------------------------------------
@@ -60,10 +62,10 @@
 &kp  LCTRL    &kp  SEMI     &kp  Q        &kp  J        &kp  K        &kp  X        &kp  ESC                                           &caps_word    &kp  B        &kp  M        &kp  W        &kp  V        &kp  Z        &kp  SLASH
                                                         &kp  LGUI     &kp  LALT     &sk  LSHIFT    &mo  NAV_L            &mo  SYM_L    &kp  SPACE    &kp  LALT     &kp  RGUI
                         >;
-			
+
                         sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
                 };
-		
+
                 colemak_layer {
 /* COLEMAK-DH
  * -------------------------------------------------------------------------------------------------------------------------------------
@@ -78,12 +80,12 @@
 &kp  LCTRL    &kp  Z        &kp  X        &kp  C        &kp  D        &kp  V        &kp   ESC                                          &caps_word    &kp  K        &kp  H        &kp  COMMA    &kp  DOT      &kp  SLASH    &kp  SQT
                                                         &kp  LGUI     &kp  LALT     &sk  LSHIFT    &mo  NAV_L            &mo  SYM_L    &kp  SPACE    &kp  LALT     &kp  RGUI
                         >;
-			
+
                         sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
                 };
-		
+
                 nav_layer {
-/* NAV   
+/* NAV
  * -------------------------------------------------------------------------------------------------------------------------------------
  * | Copy  |   1   |   2   |   3   |   4   |   5   |-----------------------------------|   6   |   7   |   8   |   9   |   0   | BSPC  |
  * | Cut   |  GUI  |  Alt  | Ctrl  | Shift | Paste |-----------------------------------| PG UP |  Left |  Up   |  Down | Right | PG DN |
@@ -94,9 +96,9 @@
 &kp  Copy     &kp  N1       &kp  N2       &kp  N3       &kp  N4       &kp  N5                                                                        &kp   N6      &kp   N7      &kp   N8      &kp   N9      &kp  N0       &trans
 &kp  Cut      &kp  LGUI     &kp  LALT     &kp  LCTRL    &kp  LSHFT    &kp  Paste                                                                     &kp   PG_UP   &kp  LEFT    &kp   UP      &kp   DOWN    &kp  RIGHT    &kp PG_DN
 &trans        &kp  F1       &kp  F2       &kp  F3       &kp  F4       &kp  F5       &kp Undo                                           &kp  Redo     &kp   F6      &kp  F7      &kp   F8      &kp   F9      &kp  F10      &kp RCTRL
-                                                        &trans        &trans        &trans        &trans                 &mo ADJ_L     &trans        &trans        &trans 
+                                                        &trans        &trans        &trans        &trans                 &mo ADJ_L     &trans        &trans        &trans
                         >;
-			
+
                         sensor-bindings = <&inc_dec_kp PG_UP PG_DN &inc_dec_kp C_VOL_UP C_VOL_DN>;
                 };
 
@@ -114,10 +116,10 @@
 &trans        &kp  PIPE     &kp  UNDER    &kp  PLUS     &kp  LBRC     &kp  RBRC     &sk  RALT                                          &kp K_APP     &kp  C_MUTE   &kp  C_VOL_DN &kp  C_VOL_UP &kp  C_PP     &none         &kp RCTRL
                                                         &trans        &trans        &trans       &mo  ADJ_L               &trans       &trans        &trans        &trans
                         >;
-			
+
                         sensor-bindings = <&inc_dec_kp PG_UP PG_DN &inc_dec_kp C_VOL_UP C_VOL_DN>;
                 };
-		
+
                 adj_layer {
 /* ADJUST
  * -------------------------------------------------------------------------------------------------------------------------------------
@@ -130,9 +132,9 @@
 &none         &to  QWERTY_L &to  DVORAK_L &to  COLEMK_L &none         &none                                                                             &none             &kp   F11          &kp   F12  &kp PRINTSCREEN   &ext_power EP_OFF  &ext_power EP_ON
 &reset        &bt  BT_SEL 0 &bt  BT_SEL 1 &bt  BT_SEL 2 &bt  BT_SEL 3 &bt  BT_SEL 4                                                                     &none             &none              &none            &none          &none           &reset
 &none         &kp  LGUI     &kp  LALT     &kp  LCTRL    &kp LSHIFT    &none         &bt BT_CLR                                         &none            &none             &none              &out  OUT_USB    &out  OUT_BLE  &none           &bootloader
-                                                        &trans        &trans        &trans        &trans                 &trans        &trans           &trans            &trans 
+                                                        &trans        &trans        &trans        &trans                 &trans        &trans           &trans            &trans
                         >;
-			
+
                         sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
                 };
         };
