@@ -22,6 +22,18 @@
 #define Redo   LC(Y)
 
 / {
+    behaviors {
+        home_row_sticky: home_row_sticky {
+            compatible = "zmk,behavior-sticky-key";
+            label = "HOME_ROW_STICKY";
+            bindings = <&kp>;
+            #binding-cells = <1>;
+            release-after-ms = <1000>;
+            quick-release;
+            ignore-modifiers;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
@@ -55,9 +67,9 @@
 
         num_layer {
             bindings = <
-&trans  &trans     &kp N9  &kp N8  &kp N4  &kp COMMA                                    &trans  &trans     &trans     &trans    &trans    &trans
-&trans  &kp MINUS  &kp N3  &kp N2  &kp N1  &kp N0                                       &trans  &kp LCTRL  &kp LSHFT  &kp LALT  &kp LGUI  &trans
-&trans  &trans     &kp N7  &kp N6  &kp N5  &kp DOT    &trans                    &trans  &trans  &trans     &trans     &trans    &trans    &trans
+&trans  &trans     &kp N9  &kp N8  &kp N4  &kp COMMA                                    &trans  &trans                  &trans                  &trans                 &trans                 &trans
+&trans  &kp MINUS  &kp N3  &kp N2  &kp N1  &kp N0                                       &trans  &home_row_sticky LCTRL  &home_row_sticky LSHFT  &home_row_sticky LALT  &home_row_sticky LGUI  &trans
+&trans  &trans     &kp N7  &kp N6  &kp N5  &kp DOT    &trans                    &trans  &trans  &trans                  &trans                  &trans                 &trans                 &trans
                                    &trans  &trans     &trans  &trans    &trans  &trans  &trans  &trans
             >;
         };
@@ -73,27 +85,27 @@
 
         sym_left_layer {
             bindings = <
-&kp TILDE  &kp PERCENT  &kp LT     &kp GT     &kp LEFT_BRACE        &kp RIGHT_BRACE                                          &kp GRAVE          &kp AT         &kp EXCLAMATION  &kp HASH        &trans    &trans
-&kp CARET  &kp LGUI     &kp LALT   &kp LSHFT  &kp LCTRL             &kp DOLLAR                                               &kp DOUBLE_QUOTES  &kp EQUAL      &kp COLON        &kp UNDERSCORE  &kp PIPE  &kp DOLLAR
-&trans     &trans       &kp SLASH  &kp STAR   &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &trans                    &trans  &kp SQT            &kp SEMICOLON  &kp QUESTION     &kp BACKSLASH   &trans    &trans
-                                              &trans                &trans                 &trans  &trans    &trans  &trans  &trans             &trans
+&kp TILDE  &kp PERCENT            &kp LT                 &kp GT                  &kp LEFT_BRACE          &kp RIGHT_BRACE                                          &kp GRAVE          &kp AT         &kp EXCLAMATION  &kp HASH        &trans    &trans
+&kp CARET  &home_row_sticky LGUI  &home_row_sticky LALT  &home_row_sticky LSHFT  &home_row_sticky LCTRL  &kp DOLLAR                                               &kp DOUBLE_QUOTES  &kp EQUAL      &kp COLON        &kp UNDERSCORE  &kp PIPE  &kp DOLLAR
+&trans     &trans                 &kp SLASH              &kp STAR                &kp LEFT_PARENTHESIS    &kp RIGHT_PARENTHESIS  &trans                    &trans  &kp SQT            &kp SEMICOLON  &kp QUESTION     &kp BACKSLASH   &trans    &trans
+                                                                                 &trans                  &trans                 &trans  &trans    &trans  &trans  &trans             &trans
             >;
         };
 
         sym_right_layer {
             bindings = <
-&kp TILDE  &kp PERCENT    &kp LT     &kp GT    &kp LEFT_BRACE        &kp RIGHT_BRACE                                          &kp GRAVE          &kp AT_SIGN    &kp EXCLAMATION  &kp HASH       &trans    &trans
-&kp CARET  &kp AMPERSAND  &kp MINUS  &kp PLUS  &kp EQUAL             &kp DOLLAR                                               &kp DOUBLE_QUOTES  &kp LCTRL      &kp LSHIFT       &kp LALT       &kp LGUI  &kp DOLLAR
-&trans     &trans         &kp SLASH  &kp STAR  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &trans                    &trans  &kp SQT            &kp SEMICOLON  &kp QUESTION     &kp BACKSLASH  &trans    &trans
+&kp TILDE  &kp PERCENT    &kp LT     &kp GT    &kp LEFT_BRACE        &kp RIGHT_BRACE                                          &kp GRAVE          &kp AT_SIGN             &kp EXCLAMATION          &kp HASH               &trans                 &trans
+&kp CARET  &kp AMPERSAND  &kp MINUS  &kp PLUS  &kp EQUAL             &kp DOLLAR                                               &kp DOUBLE_QUOTES  &home_row_sticky LCTRL  &home_row_sticky LSHIFT  &home_row_sticky LALT  &home_row_sticky LGUI  &kp DOLLAR
+&trans     &trans         &kp SLASH  &kp STAR  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &trans                    &trans  &kp SQT            &kp SEMICOLON           &kp QUESTION             &kp BACKSLASH          &trans                 &trans
                                                &trans                &trans                 &trans  &trans    &trans  &trans  &trans             &trans
             >;
         };
 
         nav_layer {
             bindings = <
-&kp     &kp HOME        &kp PAGE_DOWN   &kp PAGE_UP   &kp END          &kp                        &kp  &msc SCRL_LEFT  &msc SCRL_DOWN  &msc SCRL_UP  &msc SCRL_RIGHT  &kp
-&trans  &kp LEFT        &kp DOWN        &kp UP        &kp RIGHT        &kp                        &kp  &kp LCTRL       &kp LSHIFT      &kp LEFT_ALT  &kp LGUI         &trans
-&kp     &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_UP  &mmv MOVE_RIGHT  &kp  &kp              &kp  &kp  &mkp LCLK       &mkp RCLK       &kp           &kp              &kp
+&kp     &kp HOME        &kp PAGE_DOWN   &kp PAGE_UP   &kp END          &kp                        &kp  &msc SCRL_LEFT          &msc SCRL_DOWN           &msc SCRL_UP               &msc SCRL_RIGHT        &kp
+&trans  &kp LEFT        &kp DOWN        &kp UP        &kp RIGHT        &kp                        &kp  &home_row_sticky LCTRL  &home_row_sticky LSHIFT  &home_row_sticky LEFT_ALT  &home_row_sticky LGUI  &trans
+&kp     &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_UP  &mmv MOVE_RIGHT  &kp  &kp              &kp  &kp  &mkp LCLK               &mkp RCLK                &kp                        &kp                    &kp
                                                       &kp              &kp  &kp  &kp    &kp  &kp  &kp  &kp
             >;
         };
