@@ -2,6 +2,8 @@ manifest:
   remotes:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
+    - name: swapper
+      url-base: https://github.com/caksoylar
   projects:
     - name: zmk
       remote: zmkfirmware
@@ -9,5 +11,9 @@ manifest:
       # TODO: Try build main eventually
       revision: main
       import: app/west.yml
+
+    - name: zmk-smart-toggle
+      remote: swapper
+      revision: main
   self:
     path: config
