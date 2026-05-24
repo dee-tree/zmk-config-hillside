@@ -108,6 +108,15 @@
 
             // shift for both left and right symbol layers
         };
+
+        fun_swapper: fun_swapper {
+            compatible = "zmk,behavior-smart-toggle";
+            #binding-cells = <0>;
+            bindings = <&mo 3>, <&none>;
+
+            ignored-key-positions = <1>, <2>, <3>, <4>, <13>, <14>, <15>, <16>, <25>, <26>, <27>, <28>;
+            // F-keys
+        };
     };
 
     keymap {
@@ -143,7 +152,7 @@
 
         num_layer {
             bindings = <
-&trans  &kp PLUS        &kp N9  &kp N8  &kp N4  &tog 3                                     &trans  &trans                  &trans                  &trans                 &trans                 &trans
+&trans  &kp PLUS        &kp N9  &kp N8  &kp N4  &fun_swapper                               &trans  &trans                  &trans                  &trans                 &trans                 &trans
 &trans  &kp MINUS       &kp N3  &kp N2  &kp N1  &kp N0                                     &trans  &home_row_sticky LCTRL  &home_row_sticky LSHFT  &home_row_sticky LALT  &home_row_sticky LGUI  &trans
 &trans  &kp UNDERSCORE  &kp N7  &kp N6  &kp N5  &kp DOT  &trans                    &trans  &trans  &mo 3                   &trans                  &trans                 &trans                 &trans
                                         &trans  &trans   &trans  &trans    &trans  &trans  &trans  &trans
