@@ -105,7 +105,8 @@
             bindings = <&kp LALT>, <&kp TAB>;
 
             ignored-key-positions = <15>, <20>;
- // shift for both left and right symbol layers
+
+            // shift for both left and right symbol layers
         };
     };
 
@@ -160,10 +161,10 @@
 
         sym_left_layer {
             bindings = <
-&kp TILDE  &kp PERCENT            &kp LT                 &kp GT                  &kp LEFT_BRACE          &kp RIGHT_BRACE                                          &kp GRAVE          &kp AT         &kp EXCLAMATION  &kp HASH        &trans    &trans
-&kp CARET  &home_row_sticky LGUI  &home_row_sticky LALT  &home_row_sticky LSHFT  &home_row_sticky LCTRL  &swapper                                                 &kp DOUBLE_QUOTES  &kp EQUAL      &kp COLON        &kp UNDERSCORE  &kp PIPE  &kp DOLLAR
-&trans     &trans                 &kp SLASH              &kp STAR                &kp LEFT_PARENTHESIS    &kp RIGHT_PARENTHESIS  &trans                    &trans  &kp SQT            &kp SEMICOLON  &kp QUESTION     &kp BACKSLASH   &trans    &trans
-                                                                                 &trans                  &trans                 &trans  &trans    &trans  &mo 7   &trans             &trans
+&kp TILDE  &kp PERCENT            &kp LT                 &kp GT                  &kp LEFT_BRACE          &kp RIGHT_BRACE                                                 &kp GRAVE          &kp AT         &kp EXCLAMATION  &kp HASH        &trans    &trans
+&kp CARET  &home_row_sticky LGUI  &home_row_sticky LALT  &home_row_sticky LSHFT  &home_row_sticky LCTRL  &swapper                                                        &kp DOUBLE_QUOTES  &kp EQUAL      &kp COLON        &kp UNDERSCORE  &kp PIPE  &kp DOLLAR
+&trans     &kp HASH               &kp SLASH              &kp STAR                &kp LEFT_PARENTHESIS    &kp RIGHT_PARENTHESIS  &kp LG(SPACE)                    &trans  &kp SQT            &kp SEMICOLON  &kp QUESTION     &kp BACKSLASH   &trans    &trans
+                                                                                 &kp PRINTSCREEN         &kp LG(LS(S))          &trans         &trans    &trans  &mo 7   &trans             &trans
             >;
         };
 
@@ -171,24 +172,24 @@
             bindings = <
 &kp TILDE  &kp PERCENT    &kp LT     &kp GT    &kp LEFT_BRACE        &kp RIGHT_BRACE                                          &kp GRAVE  &kp AT_SIGN             &kp EXCLAMATION          &kp HASH               &trans                 &trans
 &kp CARET  &kp AMPERSAND  &kp MINUS  &kp PLUS  &kp EQUAL             &kp DOLLAR                                               &swapper   &home_row_sticky LCTRL  &home_row_sticky LSHIFT  &home_row_sticky LALT  &home_row_sticky LGUI  &kp DOLLAR
-&trans     &trans         &kp SLASH  &kp STAR  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &trans                    &trans  &kp SQT    &kp SEMICOLON           &kp QUESTION             &kp BACKSLASH          &trans                 &trans
+&trans     &kp HASH       &kp SLASH  &kp STAR  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &trans                    &trans  &kp SQT    &kp SEMICOLON           &kp QUESTION             &kp BACKSLASH          &trans                 &trans
                                                &trans                &trans                 &mo 7   &trans    &trans  &trans  &trans     &trans
             >;
         };
 
         nav_layer {
             bindings = <
-&trans  &kp HOME        &kp PAGE_DOWN   &kp PAGE_UP   &kp END          &trans                                          &tog 1  &msc SCRL_LEFT          &msc SCRL_DOWN           &msc SCRL_UP               &msc SCRL_RIGHT        &trans
-&trans  &kp LEFT        &kp DOWN        &kp UP        &kp RIGHT        &trans                                          &trans  &home_row_sticky LCTRL  &home_row_sticky LSHIFT  &home_row_sticky LEFT_ALT  &home_row_sticky LGUI  &trans
-&trans  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_UP  &mmv MOVE_RIGHT  &trans    &trans                        &trans  &trans  &mkp LCLK               &mkp RCLK                &trans                     &trans                 &trans
-                                                      &trans           &mkp MB1  &mkp MB3  &mkp MB2    &trans  &trans  &trans  &trans
+&trans             &kp HOME        &kp PAGE_DOWN   &kp PAGE_UP   &kp END          &trans                                          &tog 1  &tog 8                  &trans                   &trans                     &trans                 &trans
+&trans             &kp LEFT        &kp DOWN        &kp UP        &kp RIGHT        &trans                                          &trans  &home_row_sticky LCTRL  &home_row_sticky LSHIFT  &home_row_sticky LEFT_ALT  &home_row_sticky LGUI  &trans
+&kp LC(BACKSPACE)  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_UP  &mmv MOVE_RIGHT  &trans    &trans                        &trans  &trans  &msc SCRL_LEFT          &msc SCRL_DOWN           &msc SCRL_UP               &msc SCRL_RIGHT        &kp LC(DELETE)
+                                                                 &trans           &mkp MB1  &mkp MB3  &mkp MB2    &trans  &trans  &trans  &trans
             >;
         };
 
         media_layer {
             bindings = <
 &bt BT_NXT  &bt BT_SEL 0  &bt BT_SEL 1       &bt BT_SEL 2     &bt BT_SEL 3  &bt BT_SEL 4                                    &tog 1  &tog 8  &trans  &trans  &trans  &trans
-&trans      &kp LS(TAB)   &trans             &trans           &trans        &trans                                          &trans  &trans  &trans  &trans  &trans  &trans
+&trans      &trans        &trans             &trans           &trans        &trans                                          &trans  &trans  &trans  &trans  &trans  &trans
 &trans      &kp C_PREV    &kp C_VOLUME_DOWN  &kp C_VOLUME_UP  &kp C_NEXT    &trans        &trans                    &trans  &trans  &trans  &trans  &trans  &trans  &trans
                                                               &trans        &trans        &trans  &trans    &trans  &trans  &trans  &trans
             >;
