@@ -28,6 +28,8 @@
 #define Paste  LC(V)
 #define Redo   LC(Y)
 
+#define DANGER_DELAY 3000
+
 / {
     behaviors {
         home_row_sticky: home_row_sticky {
@@ -134,6 +136,46 @@
                 <28>;
 
             // F-keys
+        };
+
+        bt_reset_hold: bt_reset_hold {
+            compatible = "zmk,behavior-hold-tap";
+            label = "BT_RESET_HOLD";
+            bindings = <&bt_clear_all_macro>, <&bt_clear_macro>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <DANGER_DELAY>;
+            flavor = "tap-preferred";
+        };
+
+        bootloader_reset_hold: bootloader_reset_hold {
+            compatible = "zmk,behavior-hold-tap";
+            label = "BOOTLOADER_RESET_HOLD";
+            bindings = <&bootloader_reset_macro>, <&none>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <DANGER_DELAY>;
+            flavor = "tap-preferred";
+        };
+
+        output_hold: output_hold {
+            compatible = "zmk,behavior-hold-tap";
+            label = "OUTPUT_HOLD";
+            bindings = <&out>, <&out>;
+
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <DANGER_DELAY>;
+        };
+
+        ext_power_hold: ext_power_hold {
+            compatible = "zmk,behavior-hold-tap";
+            label = "EXT_POWER_HOLD";
+            bindings = <&ext_power>, <&ext_power>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <DANGER_DELAY>;
+            flavor = "tap-preferred";
         };
     };
 
