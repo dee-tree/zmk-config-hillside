@@ -8,7 +8,9 @@
 #include <input/processors.dtsi>
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/ext_power.h>
 #include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/outputs.h>
 #include <dt-bindings/zmk/pointing.h>
 
 #define QWERTY_L    0
@@ -21,13 +23,11 @@
 #define NAV_RIGHT_L 7
 #define MEDIA_L     8
 #define JAM_L       9
-
 #define Undo   LC(Z)
 #define Cut    LC(X)
 #define Copy   LC(C)
 #define Paste  LC(V)
 #define Redo   LC(Y)
-
 #define DANGER_DELAY 3000
 
 / {
@@ -232,9 +232,9 @@
  */
 
             bindings = <
-&kp ESCAPE    &kp Q  &kp W  &kp E  &kp R                             &kp T                                                                                                                                                                         &kp Y                            &kp U                      &kp I      &kp O    &kp P      &kp LEFT_BRACKET
-&kp LEFT_WIN  &kp A  &kp S  &kp D  &kp F                             &kp G                                                                                                                                                                         &kp H                            &kp J                      &kp K      &kp L    &kp SEMI   &kp SQT
-&trans        &kp Z  &kp X  &kp C  &kp V                             &kp B             &thumb_key_layer NAV_LEFT_L LEFT_BRACKET                                                                                  &trans                            &kp N                            &kp M                      &kp COMMA  &kp DOT  &kp SLASH  &kp RIGHT_BRACKET
+&kp ESCAPE    &kp Q  &kp W  &kp E  &kp R                             &kp T                                                                                                                                                                         &kp Y                            &kp U                          &kp I      &kp O    &kp P      &kp LEFT_BRACKET
+&kp LEFT_WIN  &kp A  &kp S  &kp D  &kp F                             &kp G                                                                                                                                                                         &kp H                            &kp J                          &kp K      &kp L    &kp SEMI   &kp SQT
+&trans        &kp Z  &kp X  &kp C  &kp V                             &kp B             &thumb_key_layer NAV_LEFT_L LEFT_BRACKET                                                                                  &trans                            &kp N                            &kp M                          &kp COMMA  &kp DOT  &kp SLASH  &kp RIGHT_BRACKET
                                    &thumb_key_layer NUM_L BACKSPACE  &shift_dedicated  &thumb_key_layer SYM_LEFT_L TAB           &thumb_active_key_mod LCTRL SPACE    &thumb_active_key_layer NAV_RIGHT_L ENTER  &thumb_key_layer SYM_RIGHT_L TAB  &thumb_key_mod LSHIFT BACKSPACE  &thumb_key_layer NUM_L DELETE
             >;
 
@@ -252,9 +252,9 @@
 
         num_layer {
             bindings = <
-&trans  &kp PLUS        &kp N9  &kp N8  &kp N4  &fun_swapper                                    &trans  &trans                      &trans                  &trans                 &trans                 &trans
-&trans  &kp MINUS       &kp N3  &kp N2  &kp N1  &kp N0                                          &trans  &home_row_sticky LCTRL      &home_row_sticky LSHFT  &home_row_sticky LALT  &home_row_sticky LGUI  &trans
-&trans  &kp UNDERSCORE  &kp N7  &kp N6  &kp N5  &kp DOT       &trans                    &trans  &trans  &mo FUN_L                   &trans                  &trans                 &trans                 &trans
+&trans  &kp PLUS        &kp N9  &kp N8  &kp N4  &fun_swapper                                    &trans  &trans                  &trans                  &trans                 &trans                 &trans
+&trans  &kp MINUS       &kp N3  &kp N2  &kp N1  &kp N0                                          &trans  &home_row_sticky LCTRL  &home_row_sticky LSHFT  &home_row_sticky LALT  &home_row_sticky LGUI  &trans
+&trans  &kp UNDERSCORE  &kp N7  &kp N6  &kp N5  &kp DOT       &trans                    &trans  &trans  &mo FUN_L               &trans                  &trans                 &trans                 &trans
                                         &trans  &trans        &trans  &trans    &trans  &trans  &trans  &trans
             >;
         };
@@ -270,19 +270,19 @@
 
         sym_left_layer {
             bindings = <
-&kp TILDE  &kp PERCENT            &kp LT                 &kp GT                  &kp LEFT_BRACE          &kp RIGHT_BRACE                                                           &kp GRAVE          &kp AT         &kp EXCLAMATION  &kp HASH        &trans    &trans
-&kp CARET  &home_row_sticky LGUI  &home_row_sticky LALT  &home_row_sticky LSHFT  &home_row_sticky LCTRL  &kp DOLLAR                                                                &kp DOUBLE_QUOTES  &kp EQUAL      &kp COLON        &kp UNDERSCORE  &kp PIPE  &kp DOLLAR
-&trans     &kp HASH               &kp SLASH              &kp STAR                &kp LEFT_PARENTHESIS    &kp RIGHT_PARENTHESIS  &kp RIGHT_BRACKET                    &trans        &kp SQT            &kp SEMICOLON  &kp QUESTION     &kp BACKSLASH   &trans    &trans
-                                                                                 &trans                  &trans                 &trans             &trans    &trans  &mo MEDIA_L   &trans             &trans
+&kp TILDE  &kp PERCENT            &kp LT                 &kp GT                  &kp LEFT_BRACE          &kp RIGHT_BRACE                                                          &kp GRAVE          &kp AT         &kp EXCLAMATION  &kp HASH        &trans    &trans
+&kp CARET  &home_row_sticky LGUI  &home_row_sticky LALT  &home_row_sticky LSHFT  &home_row_sticky LCTRL  &kp DOLLAR                                                               &kp DOUBLE_QUOTES  &kp EQUAL      &kp COLON        &kp UNDERSCORE  &kp PIPE  &kp DOLLAR
+&trans     &kp HASH               &kp SLASH              &kp STAR                &kp LEFT_PARENTHESIS    &kp RIGHT_PARENTHESIS  &kp RIGHT_BRACKET                    &trans       &kp SQT            &kp SEMICOLON  &kp QUESTION     &kp BACKSLASH   &trans    &trans
+                                                                                 &trans                  &trans                 &trans             &trans    &trans  &mo MEDIA_L  &trans             &trans
             >;
         };
 
         sym_right_layer {
             bindings = <
-&kp TILDE  &kp PERCENT    &kp LT     &kp GT    &kp LEFT_BRACE        &kp RIGHT_BRACE                                                &kp GRAVE          &kp AT_SIGN             &kp EXCLAMATION          &kp HASH               &trans                 &trans
-&kp CARET  &kp AMPERSAND  &kp MINUS  &kp PLUS  &kp EQUAL             &kp DOLLAR                                                     &kp DOUBLE_QUOTES  &home_row_sticky LCTRL  &home_row_sticky LSHIFT  &home_row_sticky LALT  &home_row_sticky LGUI  &kp DOLLAR
-&trans     &kp HASH       &kp SLASH  &kp STAR  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &trans                          &trans  &kp SQT            &kp SEMICOLON           &kp QUESTION             &kp BACKSLASH          &trans                 &trans
-                                               &trans                &trans                 &mo MEDIA_L   &trans    &trans  &trans  &trans             &trans
+&kp TILDE  &kp PERCENT    &kp LT     &kp GT    &kp LEFT_BRACE        &kp RIGHT_BRACE                                               &kp GRAVE          &kp AT_SIGN             &kp EXCLAMATION          &kp HASH               &trans                 &trans
+&kp CARET  &kp AMPERSAND  &kp MINUS  &kp PLUS  &kp EQUAL             &kp DOLLAR                                                    &kp DOUBLE_QUOTES  &home_row_sticky LCTRL  &home_row_sticky LSHIFT  &home_row_sticky LALT  &home_row_sticky LGUI  &kp DOLLAR
+&trans     &kp HASH       &kp SLASH  &kp STAR  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &trans                         &trans  &kp SQT            &kp SEMICOLON           &kp QUESTION             &kp BACKSLASH          &trans                 &trans
+                                               &trans                &trans                 &mo MEDIA_L  &trans    &trans  &trans  &trans             &trans
             >;
         };
 
@@ -306,10 +306,10 @@
 
         media_layer {
             bindings = <
-&bt BT_NXT  &bt_or_reset_hold BT_SEL 0  &bt_or_reset_hold BT_SEL 1       &bt_or_reset_hold BT_SEL 2     &bt_or_reset_hold BT_SEL 3  &bt_or_reset_hold BT_SEL 4                                     &trans  &trans  &trans  &trans  &trans  &trans
-&trans      &trans                      &trans                           &trans                         &trans                      &trans                                                         &trans  &trans  &trans  &trans  &trans  &trans
-&trans      &kp C_PREV                  &kp C_VOLUME_DOWN                &kp C_VOLUME_UP                &kp C_NEXT                  &trans                       &trans                    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-                                                                         &trans                         &trans                      &trans                       &trans                    &trans  &trans  &trans  &trans
+&bt BT_NXT  &bt_or_reset_hold BT_SEL 0  &bt_or_reset_hold BT_SEL 1  &bt_or_reset_hold BT_SEL 2  &bt_or_reset_hold BT_SEL 3  &bt_or_reset_hold BT_SEL 4                                    &trans  &trans  &output_hold OUT_USB OUT_TOG  &ext_power_hold EP_OFF EP_TOG  &trans  &bt_reset_hold 0 0
+&trans      &trans                      &trans                      &trans                      &trans                      &trans                                                        &trans  &trans  &trans                        &trans                         &trans  &trans
+&trans      &kp C_PREV                  &kp C_VOLUME_DOWN           &kp C_VOLUME_UP             &kp C_NEXT                  &trans                      &trans                    &trans  &trans  &trans  &trans                        &trans                         &trans  &bootloader_reset_hold 0 0
+                                                                                                &trans                      &trans                      &trans  &trans    &trans  &trans  &trans  &trans
             >;
         };
 
