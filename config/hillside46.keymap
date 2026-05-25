@@ -114,7 +114,20 @@
             #binding-cells = <0>;
             bindings = <&mo 3>, <&none>;
 
-            ignored-key-positions = <1>, <2>, <3>, <4>, <13>, <14>, <15>, <16>, <25>, <26>, <27>, <28>;
+            ignored-key-positions =
+                <1>,
+                <2>,
+                <3>,
+                <4>,
+                <13>,
+                <14>,
+                <15>,
+                <16>,
+                <25>,
+                <26>,
+                <27>,
+                <28>;
+
             // F-keys
         };
     };
@@ -132,10 +145,10 @@
  */
 
             bindings = <
-&kp LEFT_BRACKET  &kp Q  &kp W  &kp E  &kp R                      &kp T                                                                                                                                   &kp Y                            &kp U                      &kp I      &kp O    &kp P      &kp RIGHT_BRACKET
-&kp LEFT_GUI      &kp A  &kp S  &kp D  &kp F                      &kp G                                                                                                                                   &kp H                            &kp J                      &kp K      &kp L    &kp SEMI   &kp SQT
-&kp BACKSPACE     &kp Z  &kp X  &kp C  &kp V                      &kp B             &kp LPAR                                                                                      &kp RPAR                &kp N                            &kp M                      &kp COMMA  &kp DOT  &kp SLASH  &kp DELETE
-                                       &thumb_key_layer 2 ESCAPE  &shift_dedicated  &thumb_key_layer 4 TAB  &thumb_active_key_mod LCTRL SPACE    &thumb_active_key_layer 6 ENTER  &thumb_key_layer 5 TAB  &thumb_key_mod LSHIFT BACKSPACE  &thumb_key_layer 2 DELETE
+&kp ESCAPE    &kp Q  &kp W  &kp E  &kp R                         &kp T                                                                                                                                            &kp Y                            &kp U                      &kp I      &kp O    &kp P      &kp LEFT_BRACKET
+&kp LEFT_WIN  &kp A  &kp S  &kp D  &kp F                         &kp G                                                                                                                                            &kp H                            &kp J                      &kp K      &kp L    &kp SEMI   &kp SQT
+&trans        &kp Z  &kp X  &kp C  &kp V                         &kp B             &thumb_key_layer 6 LEFT_BRACKET                                                                        &trans                  &kp N                            &kp M                      &kp COMMA  &kp DOT  &kp SLASH  &kp RIGHT_BRACKET
+                                   &thumb_key_layer 2 BACKSPACE  &shift_dedicated  &thumb_key_layer 4 TAB           &thumb_active_key_mod LCTRL SPACE    &thumb_active_key_layer 7 ENTER  &thumb_key_layer 5 TAB  &thumb_key_mod LSHIFT BACKSPACE  &thumb_key_layer 2 DELETE
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
@@ -152,10 +165,10 @@
 
         num_layer {
             bindings = <
-&trans  &kp PLUS        &kp N9  &kp N8  &kp N4  &fun_swapper                               &trans  &trans                  &trans                  &trans                 &trans                 &trans
-&trans  &kp MINUS       &kp N3  &kp N2  &kp N1  &kp N0                                     &trans  &home_row_sticky LCTRL  &home_row_sticky LSHFT  &home_row_sticky LALT  &home_row_sticky LGUI  &trans
-&trans  &kp UNDERSCORE  &kp N7  &kp N6  &kp N5  &kp DOT  &trans                    &trans  &trans  &mo 3                   &trans                  &trans                 &trans                 &trans
-                                        &trans  &trans   &trans  &trans    &trans  &trans  &trans  &trans
+&trans  &kp PLUS        &kp N9  &kp N8  &kp N4  &fun_swapper                                    &trans  &trans                  &trans                  &trans                 &trans                 &trans
+&trans  &kp MINUS       &kp N3  &kp N2  &kp N1  &kp N0                                          &trans  &home_row_sticky LCTRL  &home_row_sticky LSHFT  &home_row_sticky LALT  &home_row_sticky LGUI  &trans
+&trans  &kp UNDERSCORE  &kp N7  &kp N6  &kp N5  &kp DOT       &trans                    &trans  &trans  &mo 3                   &trans                  &trans                 &trans                 &trans
+                                        &trans  &trans        &trans  &trans    &trans  &trans  &trans  &trans
             >;
         };
 
@@ -170,34 +183,43 @@
 
         sym_left_layer {
             bindings = <
-&kp TILDE  &kp PERCENT            &kp LT                 &kp GT                  &kp LEFT_BRACE          &kp RIGHT_BRACE                                                 &kp GRAVE          &kp AT         &kp EXCLAMATION  &kp HASH        &trans    &trans
-&kp CARET  &home_row_sticky LGUI  &home_row_sticky LALT  &home_row_sticky LSHFT  &home_row_sticky LCTRL  &swapper                                                        &kp DOUBLE_QUOTES  &kp EQUAL      &kp COLON        &kp UNDERSCORE  &kp PIPE  &kp DOLLAR
-&trans     &kp HASH               &kp SLASH              &kp STAR                &kp LEFT_PARENTHESIS    &kp RIGHT_PARENTHESIS  &kp LG(SPACE)                    &trans  &kp SQT            &kp SEMICOLON  &kp QUESTION     &kp BACKSLASH   &trans    &trans
-                                                                                 &kp PRINTSCREEN         &kp LG(LS(S))          &trans         &trans    &trans  &mo 7   &trans             &trans
+&kp TILDE  &kp PERCENT            &kp LT                 &kp GT                  &kp LEFT_BRACE          &kp RIGHT_BRACE                                                     &kp GRAVE          &kp AT         &kp EXCLAMATION  &kp HASH        &trans    &trans
+&kp CARET  &home_row_sticky LGUI  &home_row_sticky LALT  &home_row_sticky LSHFT  &home_row_sticky LCTRL  &kp DOLLAR                                                          &kp DOUBLE_QUOTES  &kp EQUAL      &kp COLON        &kp UNDERSCORE  &kp PIPE  &kp DOLLAR
+&trans     &kp HASH               &kp SLASH              &kp STAR                &kp LEFT_PARENTHESIS    &kp RIGHT_PARENTHESIS  &kp RIGHT_BRACKET                    &trans  &kp SQT            &kp SEMICOLON  &kp QUESTION     &kp BACKSLASH   &trans    &trans
+                                                                                 &trans                  &trans                 &trans             &trans    &trans  &mo 8   &trans             &trans
             >;
         };
 
         sym_right_layer {
             bindings = <
-&kp TILDE  &kp PERCENT    &kp LT     &kp GT    &kp LEFT_BRACE        &kp RIGHT_BRACE                                          &kp GRAVE  &kp AT_SIGN             &kp EXCLAMATION          &kp HASH               &trans                 &trans
-&kp CARET  &kp AMPERSAND  &kp MINUS  &kp PLUS  &kp EQUAL             &kp DOLLAR                                               &swapper   &home_row_sticky LCTRL  &home_row_sticky LSHIFT  &home_row_sticky LALT  &home_row_sticky LGUI  &kp DOLLAR
-&trans     &kp HASH       &kp SLASH  &kp STAR  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &trans                    &trans  &kp SQT    &kp SEMICOLON           &kp QUESTION             &kp BACKSLASH          &trans                 &trans
-                                               &trans                &trans                 &mo 7   &trans    &trans  &trans  &trans     &trans
+&kp TILDE  &kp PERCENT    &kp LT     &kp GT    &kp LEFT_BRACE        &kp RIGHT_BRACE                                          &kp GRAVE          &kp AT_SIGN             &kp EXCLAMATION          &kp HASH               &trans                 &trans
+&kp CARET  &kp AMPERSAND  &kp MINUS  &kp PLUS  &kp EQUAL             &kp DOLLAR                                               &kp DOUBLE_QUOTES  &home_row_sticky LCTRL  &home_row_sticky LSHIFT  &home_row_sticky LALT  &home_row_sticky LGUI  &kp DOLLAR
+&trans     &kp HASH       &kp SLASH  &kp STAR  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &trans                    &trans  &kp SQT            &kp SEMICOLON           &kp QUESTION             &kp BACKSLASH          &trans                 &trans
+                                               &trans                &trans                 &mo 8   &trans    &trans  &trans  &trans             &trans
             >;
         };
 
-        nav_layer {
+        nav_left_layer {
             bindings = <
-&trans             &kp HOME        &kp PAGE_DOWN   &kp PAGE_UP   &kp END          &trans                                          &tog 1  &tog 8                  &trans                   &trans                     &trans                 &trans
-&trans             &kp LEFT        &kp DOWN        &kp UP        &kp RIGHT        &trans                                          &trans  &home_row_sticky LCTRL  &home_row_sticky LSHIFT  &home_row_sticky LEFT_ALT  &home_row_sticky LGUI  &trans
-&kp LC(BACKSPACE)  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_UP  &mmv MOVE_RIGHT  &trans    &trans                        &trans  &trans  &msc SCRL_LEFT          &msc SCRL_DOWN           &msc SCRL_UP               &msc SCRL_RIGHT        &kp LC(DELETE)
-                                                                 &trans           &mkp MB1  &mkp MB3  &mkp MB2    &trans  &trans  &trans  &trans
+&trans  &trans       &trans  &trans  &kp LG(LS(S))  &kp PRINTSCREEN                                    &tog 1  &tog 9  &trans  &trans  &trans  &trans
+&trans  &kp LS(TAB)  &trans  &trans  &swapper       &trans                                             &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans       &trans  &trans  &trans         &trans           &trans                    &trans  &trans  &trans  &trans  &trans  &trans  &trans
+                                     &trans         &trans           &trans  &trans    &trans  &trans  &trans  &trans
+            >;
+        };
+
+        nav_right_layer {
+            bindings = <
+&trans  &kp HOME        &kp PAGE_DOWN   &kp PAGE_UP   &kp END            &trans                                          &tog 1  &tog 9                  &trans                   &trans                     &trans                 &trans
+&trans  &kp LEFT        &kp DOWN        &kp UP        &kp RIGHT          &trans                                          &trans  &home_row_sticky LCTRL  &home_row_sticky LSHIFT  &home_row_sticky LEFT_ALT  &home_row_sticky LGUI  &trans
+&trans  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_UP  &mmv MOVE_RIGHT    &trans    &trans                        &trans  &trans  &msc SCRL_LEFT          &msc SCRL_DOWN           &msc SCRL_UP               &msc SCRL_RIGHT        &trans
+                                                      &kp LC(BACKSPACE)  &mkp MB1  &mkp MB3  &mkp MB2    &trans  &trans  &trans  &trans
             >;
         };
 
         media_layer {
             bindings = <
-&bt BT_NXT  &bt BT_SEL 0  &bt BT_SEL 1       &bt BT_SEL 2     &bt BT_SEL 3  &bt BT_SEL 4                                    &tog 1  &tog 8  &trans  &trans  &trans  &trans
+&bt BT_NXT  &bt BT_SEL 0  &bt BT_SEL 1       &bt BT_SEL 2     &bt BT_SEL 3  &bt BT_SEL 4                                    &trans  &trans  &trans  &trans  &trans  &trans
 &trans      &trans        &trans             &trans           &trans        &trans                                          &trans  &trans  &trans  &trans  &trans  &trans
 &trans      &kp C_PREV    &kp C_VOLUME_DOWN  &kp C_VOLUME_UP  &kp C_NEXT    &trans        &trans                    &trans  &trans  &trans  &trans  &trans  &trans  &trans
                                                               &trans        &trans        &trans  &trans    &trans  &trans  &trans  &trans
@@ -206,7 +228,7 @@
 
         jam_layer {
             bindings = <
-&kp TAB   &kp Q  &kp E  &kp W  &kp R     &kp T                                                 &kp Y   &kp U   &kp I      &kp O    &kp P     &tog 8
+&kp TAB   &kp Q  &kp E  &kp W  &kp R     &kp T                                                 &kp Y   &kp U   &kp I      &kp O    &kp P     &tog 9
 &kp BSPC  &kp F  &kp A  &kp S  &kp D     &kp G                                                 &kp H   &kp J   &kp K      &kp L    &kp SEMI  &kp APOS
 &kp LGUI  &kp Z  &kp X  &kp C  &kp V     &kp B      &kp N1                             &kp N2  &kp N   &kp M   &kp COMMA  &kp DOT  &kp FSLH  &kp ESC
                                &kp LALT  &kp LSHFT  &kp LCTRL  &kp SPACE    &kp ENTER  &trans  &trans  &trans
