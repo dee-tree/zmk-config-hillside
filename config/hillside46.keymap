@@ -179,6 +179,36 @@
         };
     };
 
+    macros {
+        bt_clear_macro: bt_clear_macro {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&bt BT_CLR>;
+            label = "BT_CLEAR_MACRO";
+        };
+
+        bt_clear_all_macro: bt_clear_all_macro {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&bt BT_CLR_ALL>;
+            label = "BT_CLEAR_ALL_MACRO";
+        };
+
+        sys_reset_macro: sys_reset_macro {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&sys_reset>;
+            label = "SYS_RESET_MACRO";
+        };
+
+        bootloader_reset_macro: bootloader_reset_macro {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&bootloader>;
+            label = "BOOTLOADER_RESET_MACRO";
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
