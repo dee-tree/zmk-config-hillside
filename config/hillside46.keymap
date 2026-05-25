@@ -138,6 +138,16 @@
             // F-keys
         };
 
+        bt_or_reset_hold: bt_or_reset_hold {
+            compatible = "zmk,behavior-hold-tap";
+            label = "BT_OR_RESET_HOLD";
+            bindings = <&bt_clear_macro>, <&bt>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <DANGER_DELAY>;
+            flavor = "tap-preferred";
+        };
+
         bt_reset_hold: bt_reset_hold {
             compatible = "zmk,behavior-hold-tap";
             label = "BT_RESET_HOLD";
