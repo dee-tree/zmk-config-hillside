@@ -112,8 +112,7 @@
             #binding-cells = <0>;
             bindings = <&kp LALT>, <&kp TAB>;
 
-            ignored-key-positions = <15>, <20>;
-
+            ignored-key-positions = <13>;
             // shift for both left and right symbol layers
         };
 
