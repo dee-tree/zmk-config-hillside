@@ -21,3 +21,10 @@ include:
     shield: hillside46_right
   - board: nice_nano//zmk
     shield: settings_reset
+
+# hillside.view
+
+  - board: nice_nano//zmk
+    shield: hillsideview_left nice_view
+  - board: nice_nano//zmk
+    shield: hillsideview_right
