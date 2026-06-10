@@ -225,18 +225,17 @@
         default_layer {
             /* QWERTY
  * -------------------------------------------------------------------------------------------------------------------------------------
- * | `     |   Q   |   W   |   E   |   R   |   T   |-----------------------------------|   Y   |   U   |   I   |   O   |   P   | BKSPC |
- * | TAB   |   A   |   S   |   D   |   F   |   G   |-----------------------------------|   H   |   J   |   K   |   L   |   ;   | ENTER |
- * | CTRL  |   Z   |   X   |   C   |   V   |   B   |  ESC  |-------------------|  CAPS |   N   |   M   |   ,   |   .   |   /   |   '   |
- *                                 |  GUI  |  ALT  |SK SHFT|  Nav  |---|  Sym  | SPACE |  ALT  |  GUI  |
+ * | ESC   |   Q   |   W   |   E   |   R   |   T   |-----------------------------------|   Y   |   U   |   I   |   O   |   P   |   [   |
+ * | WIN   |   A   |   S   |   D   |   F   |   G   |-----------------------------------|   H   |   J   |   K   |   L   |   ;   |   '   |
+ * | NUML  |   Z   |   X   |   C   |   V   |   B   |  [    |-------------------|       |   N   |   M   |   ,   |   .   |   /   |   ]   |
+ *                                 |  NUML |  SHFT |  TAB  |  SPC  |---|  ENTR | BCKSP |  SHFT |  DEL  |
  */
 
             bindings = <
-&kp ESCAPE             &kp Q  &kp W         &kp E                             &kp R             &kp T                                                                                                                                                              &kp Y  &kp U                            &kp I      &kp O    &kp P      &kp LEFT_BRACKET
-&kp LEFT_WIN           &kp A  &kp S         &kp D                             &kp F             &kp G                                                                                                                                                              &kp H  &kp J                            &kp K      &kp L    &kp SEMI   &kp SQT
-&num_word NUM_L        &kp Z  &kp X         &kp C                             &kp V             &kp B                                                                                                                                                              &kp N  &kp M                            &kp COMMA  &kp DOT  &kp SLASH  &kp RIGHT_BRACKET
-                                                                                                       &thumb_key_layer NAV_LEFT_L LEFT_BRACKET                                                                                  &trans
-                                            &thumb_key_layer NUM_L BACKSPACE  &shift_dedicated         &thumb_key_layer SYM_LEFT_L TAB           &thumb_active_key_mod LCTRL SPACE    &thumb_active_key_layer NAV_RIGHT_L ENTER  &thumb_key_layer SYM_RIGHT_L TAB         &thumb_key_mod LSHIFT BACKSPACE  &thumb_key_layer NUM_L DELETE
+&kp ESCAPE       &kp Q  &kp W  &kp E  &kp R                             &kp T                                                                                                                                                                         &kp Y                            &kp U                          &kp I      &kp O    &kp P      &kp LEFT_BRACKET
+&kp LEFT_WIN     &kp A  &kp S  &kp D  &kp F                             &kp G                                                                                                                                                                         &kp H                            &kp J                          &kp K      &kp L    &kp SEMI   &kp SQT
+&num_word NUM_L  &kp Z  &kp X  &kp C  &kp V                             &kp B             &thumb_key_layer NAV_LEFT_L LEFT_BRACKET                                                                                  &trans                            &kp N                            &kp M                          &kp COMMA  &kp DOT  &kp SLASH  &kp RIGHT_BRACKET
+                                      &thumb_key_layer NUM_L BACKSPACE  &shift_dedicated  &thumb_key_layer SYM_LEFT_L TAB           &thumb_active_key_mod LCTRL SPACE    &thumb_active_key_layer NAV_RIGHT_L ENTER  &thumb_key_layer SYM_RIGHT_L TAB  &thumb_key_mod LSHIFT BACKSPACE  &thumb_key_layer NUM_L DELETE
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
