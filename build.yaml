@@ -4,11 +4,11 @@
 # control, add individual board + shield combinations to
 # the `include` property, e.g:
 #
-# board: [ "nice_nano_v2" ]
+# board: [ "nice_nano//zmk" ]
 # shield: [ "corne_left", "corne_right" ]
 # include:
 #   - board: bdn9_rev2
-#   - board: nice_nano_v2
+#   - board: nice_nano//zmk
 #     shield: reviung41
 #
 ---
@@ -24,6 +24,6 @@ include:
   # hillside.view
 
   - board: nice_nano//zmk
-    shield: hillsideview_left nice_view_adapter nice_epaper
+    shield: hillsideview_left nice_view_adapter nice_view_gem
   - board: nice_nano//zmk
     shield: hillsideview_right
