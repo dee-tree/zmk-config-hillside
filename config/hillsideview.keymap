@@ -223,6 +223,7 @@
         compatible = "zmk,keymap";
 
         default_layer {
+            label = "";
             /* QWERTY
  * -------------------------------------------------------------------------------------------------------------------------------------
  * | ESC   |   Q   |   W   |   E   |   R   |   T   |-----------------------------------|   Y   |   U   |   I   |   O   |   P   |   [   |
@@ -242,6 +243,7 @@
         };
 
         focal_layer {
+            label = "focal";
             bindings = <
 &trans  &kp V  &kp L  &kp H  &kp G   &kp K                                     &kp Q     &kp F   &kp O      &kp U    &kp J     &tog FOCAL_L
 &trans  &kp S  &kp R  &kp N  &kp T   &kp B                                     &kp Y     &kp C   &kp A      &kp E    &kp I     &trans
@@ -251,6 +253,7 @@
         };
 
         num_layer {
+            label = "num";
             bindings = <
 &trans  &kp PLUS        &kp N9  &kp N8  &kp N4  &fun_swapper                                    &trans  &trans                  &trans                  &trans                 &trans                 &trans
 &trans  &kp MINUS       &kp N3  &kp N2  &kp N1  &kp N0                                          &trans  &home_row_sticky LCTRL  &home_row_sticky LSHFT  &home_row_sticky LALT  &home_row_sticky LGUI  &trans
@@ -260,6 +263,7 @@
         };
 
         fun_layer {
+            label = "fun";
             bindings = <
 &trans  &kp F11  &kp F9  &kp F8  &kp F4  &trans                                    &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &kp F10  &kp F3  &kp F2  &kp F1  &trans                                    &trans  &trans  &trans  &trans  &trans  &trans
@@ -269,6 +273,7 @@
         };
 
         sym_left_layer {
+            label = "sym-l";
             bindings = <
 &kp TILDE  &kp PERCENT            &kp LT                 &kp GT                  &kp LEFT_BRACE          &kp RIGHT_BRACE                                                          &kp GRAVE          &kp AT         &kp EXCLAMATION  &kp HASH        &trans    &trans
 &kp CARET  &home_row_sticky LGUI  &home_row_sticky LALT  &home_row_sticky LSHFT  &home_row_sticky LCTRL  &kp DOLLAR                                                               &kp DOUBLE_QUOTES  &kp EQUAL      &kp COLON        &kp UNDERSCORE  &kp PIPE  &kp DOLLAR
@@ -278,6 +283,7 @@
         };
 
         sym_right_layer {
+            label = "sym-r";
             bindings = <
 &kp TILDE  &kp PERCENT    &kp LT     &kp GT    &kp LEFT_BRACE        &kp RIGHT_BRACE                                               &kp GRAVE          &kp AT_SIGN             &kp EXCLAMATION          &kp HASH               &trans                 &trans
 &kp CARET  &kp AMPERSAND  &kp MINUS  &kp PLUS  &kp EQUAL             &kp DOLLAR                                                    &kp DOUBLE_QUOTES  &home_row_sticky LCTRL  &home_row_sticky LSHIFT  &home_row_sticky LALT  &home_row_sticky LGUI  &kp DOLLAR
@@ -287,6 +293,7 @@
         };
 
         nav_left_layer {
+            label = "nav-l";
             bindings = <
 &trans  &trans       &trans  &trans  &kp LG(LS(S))  &kp PRINTSCREEN                                    &tog FOCAL_L  &tog JAM_L  &trans  &trans  &trans  &trans
 &trans  &kp LS(TAB)  &trans  &trans  &swapper       &trans                                             &trans        &trans      &trans  &trans  &trans  &trans
@@ -296,6 +303,7 @@
         };
 
         nav_right_layer {
+            label = "nav";
             bindings = <
 &trans  &kp HOME        &kp PAGE_DOWN   &kp PAGE_UP   &kp END            &trans                                          &tog FOCAL_L  &tog JAM_L              &trans                   &trans                     &trans                 &trans
 &trans  &kp LEFT        &kp DOWN        &kp UP        &kp RIGHT          &trans                                          &trans        &home_row_sticky LCTRL  &home_row_sticky LSHIFT  &home_row_sticky LEFT_ALT  &home_row_sticky LGUI  &trans
@@ -305,6 +313,7 @@
         };
 
         media_layer {
+            label = "media";
             bindings = <
 &bt BT_NXT                  &bt_or_reset_hold BT_SEL 0  &bt_or_reset_hold BT_SEL 1  &bt_or_reset_hold BT_SEL 2  &bt_or_reset_hold BT_SEL 3  &bt_or_reset_hold BT_SEL 4                                    &trans  &trans      &output_hold OUT_USB OUT_TOG  &ext_power_hold EP_OFF EP_TOG  &trans      &bt_reset_hold 0 0
 &trans                      &kp C_PREV                  &kp C_VOLUME_DOWN           &kp C_VOLUME_UP             &kp C_NEXT                  &trans                                                        &trans  &kp C_PREV  &kp C_VOLUME_DOWN             &kp C_VOLUME_UP                &kp C_NEXT  &trans
@@ -314,6 +323,7 @@
         };
 
         jam_layer {
+            label = "jam";
             bindings = <
 &kp TAB   &kp Q  &kp E  &kp W  &kp R     &kp T                                                 &kp Y   &kp U   &kp I      &kp O    &kp P     &tog JAM_L
 &kp BSPC  &kp F  &kp A  &kp S  &kp D     &kp G                                                 &kp H   &kp J   &kp K      &kp L    &kp SEMI  &kp APOS
@@ -322,7 +332,6 @@
             >;
         };
     };
-
 
         kscan: kscan {
         compatible = "zmk,kscan-gpio-matrix";
