@@ -204,6 +204,7 @@ RC(2,1) RC(2,2) RC(2,3) RC(2,4) RC(2,5) RC(3,5)                       RC(3,6) RC
 };
 
 nice_view_spi: &spi1 {
+// &nice_view_spi {
   compatible = "nordic,nrf-spim";
   pinctrl-0 = <&spi1_default>;
   pinctrl-1 = <&spi1_sleep>;
