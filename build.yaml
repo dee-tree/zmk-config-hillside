@@ -13,8 +13,7 @@
 #
 ---
 include:
-
-# Hillside 46
+  # Hillside 46
   - board: nice_nano//zmk
     shield: hillside46_left
   - board: nice_nano//zmk
@@ -22,9 +21,9 @@ include:
   - board: nice_nano//zmk
     shield: settings_reset
 
-# hillside.view
+  # hillside.view
 
   - board: nice_nano//zmk
-    shield: hillsideview_left nice_view
+    shield: hillsideview_left nice_view_adapter nice_epaper
   - board: nice_nano//zmk
     shield: hillsideview_right
