@@ -12,6 +12,7 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/outputs.h>
 #include <dt-bindings/zmk/pointing.h>
+#include <dt-bindings/zmk/input_transform.h>
 #include <behaviors/num_word.dtsi>
 
 #define QWERTY_L    0
@@ -236,24 +237,36 @@
         };
     };
 
-    tpad0_mmv_il {
-            compatible = "zmk,input-listener";
-            device = <&glidepoint_split>;
-            // input-processors = <&zip_xy_scaler 1 2>;
+    scroll_mapper: scroll_mapper {
+        compatible = "zmk,input-processor-code-mapper";
+        #input-processor-cells = <0>;
+        type = <INPUT_EV_REL>;
+        map = <INPUT_REL_X INPUT_REL_HWHEEL>,
+              <INPUT_REL_Y INPUT_REL_WHEEL>;
+    };
+
+    scroll_scaler: scroll_scaler {
+        compatible = "zmk,input-processor-scaler";
+        #input-processor-cells = <2>;
+        type = <INPUT_EV_REL>;
+        codes = <INPUT_REL_WHEEL INPUT_REL_HWHEEL>;
+        /* Accumulate fractional deltas instead of truncating to zero — without this, slow finger movements produce no scroll at all */
+        track-remainders;
+    };
+
+    tpad_peripheral_listener {
+            status = "okay";
+            input-processors = <&zip_xy_scaler 3 2>;
 
             precise {
                     layers = <NAV_LEFT_L>;
-                    process-next;
-                    input-processors = <&zip_xy_scaler 1 4>;
+                    input-processors = <&zip_xy_scaler 1 2>;
             };
             scroll {
-                    layers = <NAV_RIGHT_L>;
-                    process-next;
-                    input-processors = <&zip_xy_to_scroll_mapper>,
-                                       <&zip_xy_scaler 1 22>,
-                                       <&zip_x_scaler 1 30>;
-                    //input-processors = <&zip_xy_scaler 1 22>, <&zip_x_scaler 0 1>
-                    //                    , <&zip_xy_to_scroll_mapper>;
+                    layers = <SYM_RIGHT_L SYM_LEFT_L>;
+                    input-processors = <&scroll_mapper &scroll_scaler 1 20>,
+                                       <&zip_xy_to_scroll_mapper>,
+                                       <&zip_scroll_transform (INPUT_TRANSFORM_X_INVERT)>;
             };
     };
 
