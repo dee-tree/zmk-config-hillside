@@ -8,24 +8,28 @@ manifest:
       url-base: https://github.com/urob
     - name: nice!view-modules
       url-base: https://github.com/dee-tree
+    - name: geeksville
+      url-base: https://github.com/geeksville
   projects:
     - name: zmk
       remote: zmkfirmware
-      # revision: v0.3 # avoid compatibility break
-      # TODO: Try build main eventually
-      revision: main
+      revision: v0.3
       import: app/west.yml
 
     - name: zmk-smart-toggle
       remote: swapper
-      revision: main
+      revision: v0.3
 
     - name: zmk-auto-layer
       remote: urob
-      revision: main # Should match ZMK release.
+      revision: v0.3 # Should match ZMK release.
 
     - name: nice-view-gem
       remote: nice!view-modules
+      revision: v0.3
+
+    - name: cirque-input-module
+      remote: geeksville
       revision: main
   self:
     path: config

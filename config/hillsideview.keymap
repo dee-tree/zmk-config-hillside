@@ -254,9 +254,26 @@
         track-remainders;
     };
 
+    input_processors {
+        touch_processor: touch_processor {
+            compatible = "zmk,input-processor-behaviors";
+            #input-processor-cells = <0>;
+
+            codes = <INPUT_BTN_TOUCH>;      // watch for the 'touch' pseudo button
+            bindings  = <&mo NAV_RIGHT_L>;            // Activate Layer 4 while held &mo 4
+            // bindings  = <&mkp MB1>;            // Activate Layer 4 while held &mo 4
+        };
+    };
+
     tpad_peripheral_listener {
             status = "okay";
             input-processors = <&zip_xy_scaler 3 2>;
+
+            base {
+                layers = <QWERTY_L>;
+                process-next;
+                input-processors = <&touch_processor>;
+            };
 
             precise {
                     layers = <NAV_LEFT_L>;
