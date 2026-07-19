@@ -67,7 +67,6 @@ RC(2,1) RC(2,2) RC(2,3) RC(2,4) RC(2,5) RC(3,5)                       RC(3,6) RC
       , <&pro_micro 9 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
       , <&pro_micro 19 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
       ;
-
   };
 
   sensors {
@@ -168,18 +167,17 @@ RC(2,1) RC(2,2) RC(2,3) RC(2,4) RC(2,5) RC(3,5)                       RC(3,6) RC
 };
 
 &i2c0 {
-  status = "disabled";
+  status = "okay";
   glidepoint0: glidepoint@2a {
     compatible = "cirque,pinnacle";
     reg = <0x2a>;
-    status = "disabled";
+    status = "okay";
     data-ready-gpios = <&gpio1 2 (GPIO_ACTIVE_HIGH)>;
 
-    sensitivity = "1x";
+    sensitivity = "2x";
     sleep-mode-enable;
     invert-y;
-    // doesn't work for now
-    /* primary-tap-enable; */
+    primary-tap-enable;
   };
 };
 
@@ -204,7 +202,6 @@ RC(2,1) RC(2,2) RC(2,3) RC(2,4) RC(2,5) RC(3,5)                       RC(3,6) RC
 };
 
 nice_view_spi: &spi1 {
-// &nice_view_spi {
   compatible = "nordic,nrf-spim";
   pinctrl-0 = <&spi1_default>;
   pinctrl-1 = <&spi1_sleep>;

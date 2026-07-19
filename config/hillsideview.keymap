@@ -30,6 +30,9 @@
 #define Paste  LC(V)
 #define Redo   LC(Y)
 #define DANGER_DELAY 3000
+#define TAPPING_INTERVAL 250
+#define QUICK_TAP_INTERVAL 200
+#define PRIOR_IDLE_INTERVAL 40
 
 / {
     behaviors {
@@ -60,15 +63,23 @@
             ignore-modifiers;
         };
 
+        num_dedicated: num_dedicated {
+            compatible = "zmk,behavior-tap-dance";
+            label = "NUM_DEDICATED";
+            #binding-cells = <0>;
+            bindings = <&num_word NUM_L>, <&mo NUM_L>;
+        };
+
         thumb_key_layer: thumb_key_layer {
             compatible = "zmk,behavior-hold-tap";
             label = "THUMB_KEY_LAYER";
             bindings = <&mo>, <&kp>;
 
             #binding-cells = <2>;
-            tapping-term-ms = <250>;
-            quick-tap-ms = <200>;
-            require-prior-idle-ms = <30>;
+            tapping-term-ms = <TAPPING_INTERVAL>;
+            quick-tap-ms = <QUICK_TAP_INTERVAL>;
+            require-prior-idle-ms = <PRIOR_IDLE_INTERVAL>;
+            hold-while-undecided;
         };
 
         thumb_key_mod: thumb_key_mod {
@@ -77,8 +88,8 @@
             bindings = <&kp>, <&kp>;
 
             #binding-cells = <2>;
-            tapping-term-ms = <250>;
-            quick-tap-ms = <200>;
+            tapping-term-ms = <TAPPING_INTERVAL>;
+            quick-tap-ms = <QUICK_TAP_INTERVAL>;
             require-prior-idle-ms = <0>;
             hold-while-undecided;
         };
@@ -89,9 +100,9 @@
             bindings = <&kp>, <&kp>;
 
             #binding-cells = <2>;
-            tapping-term-ms = <250>;
-            quick-tap-ms = <200>;
-            require-prior-idle-ms = <30>;
+            tapping-term-ms = <TAPPING_INTERVAL>;
+            quick-tap-ms = <QUICK_TAP_INTERVAL>;
+            require-prior-idle-ms = <PRIOR_IDLE_INTERVAL>;
             hold-while-undecided;
         };
 
@@ -101,9 +112,9 @@
             bindings = <&mo>, <&kp>;
 
             #binding-cells = <2>;
-            tapping-term-ms = <250>;
-            quick-tap-ms = <200>;
-            require-prior-idle-ms = <30>;
+            tapping-term-ms = <TAPPING_INTERVAL>;
+            quick-tap-ms = <QUICK_TAP_INTERVAL>;
+            require-prior-idle-ms = <PRIOR_IDLE_INTERVAL>;
             hold-while-undecided;
         };
 
@@ -187,6 +198,12 @@
             tapping-term-ms = <DANGER_DELAY>;
             flavor = "tap-preferred";
         };
+
+        kp_encoder: kp_encoder {
+            compatible = "zmk,behavior-sensor-rotate-var";
+            #sensor-binding-cells = <2>;
+            bindings = <&kp>, <&kp>;
+        };
     };
 
     macros {
@@ -219,6 +236,27 @@
         };
     };
 
+    tpad0_mmv_il {
+            compatible = "zmk,input-listener";
+            device = <&glidepoint_split>;
+            // input-processors = <&zip_xy_scaler 1 2>;
+
+            precise {
+                    layers = <NAV_LEFT_L>;
+                    process-next;
+                    input-processors = <&zip_xy_scaler 1 4>;
+            };
+            scroll {
+                    layers = <NAV_RIGHT_L>;
+                    process-next;
+                    input-processors = <&zip_xy_to_scroll_mapper>,
+                                       <&zip_xy_scaler 1 22>,
+                                       <&zip_x_scaler 1 30>;
+                    //input-processors = <&zip_xy_scaler 1 22>, <&zip_x_scaler 0 1>
+                    //                    , <&zip_xy_to_scroll_mapper>;
+            };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
@@ -235,11 +273,14 @@
             bindings = <
 &kp ESCAPE       &kp Q  &kp W  &kp E  &kp R                             &kp T                                                                                                                                                                         &kp Y                            &kp U                          &kp I      &kp O    &kp P      &kp LEFT_BRACKET
 &kp LEFT_WIN     &kp A  &kp S  &kp D  &kp F                             &kp G                                                                                                                                                                         &kp H                            &kp J                          &kp K      &kp L    &kp SEMI   &kp SQT
-&num_word NUM_L  &kp Z  &kp X  &kp C  &kp V                             &kp B             &thumb_key_layer NAV_LEFT_L LEFT_BRACKET                                                                                  &trans                            &kp N                            &kp M                          &kp COMMA  &kp DOT  &kp SLASH  &kp RIGHT_BRACKET
-                                      &thumb_key_layer NUM_L BACKSPACE  &shift_dedicated  &thumb_key_layer SYM_LEFT_L TAB           &thumb_active_key_mod LCTRL SPACE    &thumb_active_key_layer NAV_RIGHT_L ENTER  &thumb_key_layer SYM_RIGHT_L TAB  &thumb_key_mod LSHIFT BACKSPACE  &thumb_key_layer NUM_L DELETE
+&kp LG(SPACE)    &kp Z  &kp X  &kp C  &kp V                             &kp B             &thumb_key_layer NAV_LEFT_L LEFT_BRACKET                                                                                  &trans                            &kp N                            &kp M                          &kp COMMA  &kp DOT  &kp SLASH  &kp RIGHT_BRACKET
+                                      &num_dedicated                    &shift_dedicated  &thumb_key_layer SYM_LEFT_L TAB           &thumb_active_key_mod LCTRL SPACE    &thumb_active_key_layer NAV_RIGHT_L ENTER  &thumb_key_layer SYM_RIGHT_L TAB  &thumb_key_mod LSHIFT BACKSPACE  &thumb_key_layer NUM_L DELETE
             >;
 
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+            // sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+            // sensor-bindings = <&kp_encoder LG(LEFT) LG(RIGHT) &kp_encoder LG(LEFT) LG(RIGHT)>;
+            // sensor-bindings = <&kp_encoder RIGHT LEFT &kp_encoder RIGHT LEFT>;
+            sensor-bindings = <&kp_encoder (RIGHT) LG(LEFT) &kp_encoder LG(RIGHT) LG(LEFT)>;
         };
 
         focal_layer {
@@ -272,6 +313,13 @@
             >;
         };
 
+            /* SYM_LEFT_L
+ * -------------------------------------------------------------------------------------------------------------------------------------
+ * |   ~   |   %   |   <   |   >   |   {   |   }   |-----------------------------------|   `   |   @   |   !   |   #   |       |       |
+ * |   ^   |  WIN  | LALT  | LSHFT | LCTRL |   $   |-----------------------------------|   "   |   =   |   :   |   _   |   |   |   $   |
+ * |       |   #   |   /   |   *   |   (   |   )   |  ]    |-------------------|       |   '   |   ;   |   ?   |   \   |   /   |       |
+ *                                 |  NUML |  SHFT |  TAB  |  SPC  |---|  ENTR | BCKSP |  SHFT |  DEL  |
+ */
         sym_left_layer {
             label = "sym-l";
             bindings = <
@@ -280,6 +328,7 @@
 &trans     &kp HASH               &kp SLASH              &kp STAR                &kp LEFT_PARENTHESIS    &kp RIGHT_PARENTHESIS  &kp RIGHT_BRACKET                    &trans       &kp SQT            &kp SEMICOLON  &kp QUESTION     &kp BACKSLASH   &trans    &trans
                                                                                  &trans                  &trans                 &trans             &trans    &trans  &mo MEDIA_L  &trans             &trans
             >;
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
 
         sym_right_layer {
@@ -325,17 +374,11 @@
         jam_layer {
             label = "jam";
             bindings = <
-&kp TAB   &kp Q  &kp E  &kp W  &kp R     &kp T                                                 &kp Y   &kp U   &kp I      &kp O    &kp P     &tog JAM_L
-&kp BSPC  &kp F  &kp A  &kp S  &kp D     &kp G                                                 &kp H   &kp J   &kp K      &kp L    &kp SEMI  &kp APOS
-&kp LGUI  &kp Z  &kp X  &kp C  &kp V     &kp B      &kp N1                             &kp N2  &kp N   &kp M   &kp COMMA  &kp DOT  &kp FSLH  &kp ESC
+&kp ESC   &kp Q  &kp E  &kp W  &kp R     &kp T                                                 &kp Y   &kp U   &kp I      &kp O    &kp P     &tog JAM_L
+&kp TAB   &kp F  &kp A  &kp S  &kp D     &kp G                                                 &kp H   &kp J   &kp K      &kp L    &kp SEMI  &kp BSPC
+&kp LGUI  &kp Z  &kp X  &kp C  &kp V     &kp B      &kp N1                             &kp N2  &kp N   &kp M   &kp COMMA  &kp DOT  &kp FSLH  &kp APOS
                                &kp LALT  &kp LSHFT  &kp LCTRL  &kp SPACE    &kp ENTER  &trans  &trans  &trans
             >;
         };
-    };
-
-        kscan: kscan {
-        compatible = "zmk,kscan-gpio-matrix";
-        diode-direction = "col2row";
-        wakeup-source;
     };
 };

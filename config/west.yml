@@ -6,13 +6,8 @@ manifest:
       url-base: https://github.com/caksoylar
     - name: urob
       url-base: https://github.com/urob
-      # support nice_oled and nice_epaper
-    # - name: mctechnology17
-    # url-base: https://github.com/mctechnology17
-    # - name: ArtemYurov
-    #   url-base: https://github.com/ArtemYurov
-    - name: m165437
-      url-base: https://github.com/M165437
+    - name: nice!view-modules
+      url-base: https://github.com/dee-tree
   projects:
     - name: zmk
       remote: zmkfirmware
@@ -29,14 +24,8 @@ manifest:
       remote: urob
       revision: main # Should match ZMK release.
 
-    # - name: zmk-nice-oled
-    #   remote: mctechnology17
-    #   revision: main
-    # - name: nice-view-central-relay
-    #   remote: ArtemYurov
-    #   revision: main
     - name: nice-view-gem
-      remote: m165437
+      remote: nice!view-modules
       revision: main
   self:
     path: config
