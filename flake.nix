@@ -75,7 +75,7 @@
           };
 
           shellHook = ''
-            export ZMK_BUILD_DIR=$(pwd)/.build;
+            export ZMK_BUILD_DIR=$(pwd)/build;
             export ZMK_CONFIG_DIR=$(pwd)/config;
             export ZMK_SRC_DIR=$(pwd)/zmk/app;
             export LD_LIBRARY_PATH="${libatomic}/lib";
